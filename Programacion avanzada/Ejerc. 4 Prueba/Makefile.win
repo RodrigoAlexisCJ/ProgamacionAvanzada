@@ -1,0 +1,41 @@
+# Project: Prueba
+# Makefile created by Dev-C++ 5.2.0.1
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main_simplex.o Polinomio.o Rac.o Prueba.o CalcDSimplex.o $(RES)
+LINKOBJ  = main_simplex.o Polinomio.o Rac.o Prueba.o CalcDSimplex.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc  
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" 
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" 
+BIN      = Prueba.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS   = $(INCS)  
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Prueba.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Prueba.exe" $(LIBS)
+
+main_simplex.o: main_simplex.cpp
+	$(CPP) -c main_simplex.cpp -o main_simplex.o $(CXXFLAGS)
+
+Polinomio.o: Polinomio.cpp
+	$(CPP) -c Polinomio.cpp -o Polinomio.o $(CXXFLAGS)
+
+Rac.o: Rac.cpp
+	$(CPP) -c Rac.cpp -o Rac.o $(CXXFLAGS)
+
+Prueba.o: Prueba.dev
+	$(CPP) -c Prueba.dev -o Prueba.o $(CXXFLAGS)
+
+CalcDSimplex.o: CalcDSimplex.cpp
+	$(CPP) -c CalcDSimplex.cpp -o CalcDSimplex.o $(CXXFLAGS)
