@@ -38,8 +38,8 @@ int main(){
   fill_n( (char*)&startup_info, sizeof( STARTUPINFO ),         0 );
   startup_info.cb = sizeof( STARTUPINFO );
   if (!CreateProcess(
+         Null,
          exepath,
-         str,
          NULL,
          NULL,
          FALSE,
