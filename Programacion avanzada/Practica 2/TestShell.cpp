@@ -38,16 +38,16 @@ int main(){
   fill_n( (char*)&startup_info, sizeof( STARTUPINFO ),         0 );
   startup_info.cb = sizeof( STARTUPINFO );
   if (!CreateProcess(
-         Null,
-         exepath,
-         NULL,
-         NULL,
-         FALSE,
-         0,
-         NULL,
-         NULL,
-         &startup_info,
-         &process_info
+        NULL,   // No module name (use command line)
+        exepath,        // Command line
+        NULL,           // Process handle not inheritable
+        NULL,           // Thread handle not inheritable
+        FALSE,          // Set handle inheritance to FALSE
+        0,              // No creation flags
+        NULL,           // Use parent's environment block
+        NULL,           // Use parent's starting directory 
+        &startup_info,            // Pointer to STARTUPINFO structure
+        &process_info            // Pointer to PROCESS_INFORMATION structure
          )){
    	return 2;
   }
